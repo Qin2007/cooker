@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cookbook</title>
+    <style>
+        body {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+<form action="post" method=post>
+    <ol id=ol></ol>
+    <button onclick="add_ingredient()" type=button>add ingredient</button>
+    <script>
+        const ol = document.getElementById('ol');
+        let ols = 0;
+
+        function add_ingredient() {
+            let x = `<li><label for="ingredient_${++ols}">ingedient name: <input type="text" name="ingredient_${ols}"/>`;
+            let optgroup = '';
+            for (const x1 of 'gram, stuk, liter, snufje, eetlepe, theelepel'.split(/, ?/g)) {
+                optgroup += `<option name="${x1}">${x1}</option>`;
+            }
+            x += `</label> <label for="unit_${ols}">unit: <select name="unit_${ols}">${optgroup}</select></label>`;
+            ol.insertAdjacentHTML('beforeend', x);
+        }
+
+        add_ingredient();
+        add_ingredient();
+        add_ingredient();
+        add_ingredient();
+    </script>
+    <button type=submit>submit</button>
+    <span hidden>$recipes</span>
+    <script>
+        const element = JSON.parse(document.querySelector('[hidden]').innerText);
+        console.log(element);
+    </script>
+</form>
+</body>
+</html>
