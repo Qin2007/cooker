@@ -3,34 +3,79 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Cookbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
-        body {
+        a:visited, a:link {
+            color: blue;
+        }
+
+        a:hover {
+            color: orangered;
+        }
+
+        a:active {
+            color: black;
+        }
+
+        html, input {
             font-family: monospace;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 450px;
         }
     </style>
 </head>
 <body>
 <form action="post" method=post>
+    <h1><label for="title">Recept title:</label> <input id="title" name="title" type=text></h1>
+    <a href="/">Home</a>
+    <h2>ingredienten</h2>
     <ol id=ol></ol>
-    <button onclick="add_ingredient()" type=button>add ingredient</button>
+    <button onclick="add_ingredient()" type=button>ingredient toevoegen</button>
+    <h2>benodigheden</h2>
+    <ol id=benodigheid></ol>
+    <button onclick="add_benodigheid()" type=button>benodigheden toevoegen</button>
+    <h2>stappen plan (bereidingswijze)</h2>
+    <label for="bereidingswijze">bereidingswijze:</label><br/>
+    <textarea name="imlazy" id="bereidingswijze" rows="25"></textarea>
+    <h2>metadata</h2>
+    <label for="date-time-local">bereidingtijd (in minutes only)</label>
+    <input type="number" id="date-time-local" name="time"/>
+    <div style="margin: 1em 0">
+        <label for="select">maal type:</label>
+        <select id="select" name="mealType"></select>
+    </div>
     <script>
         const ol = document.getElementById('ol');
-        let ols = 0;
+        const searchIndex = document.getElementById('benodigheid');
+        const select = document.getElementById('select');
+        let ols = 0, benodigheid = 0;
 
         function add_ingredient() {
-            let x = `<li><label for="ingredient_${++ols}">ingedient name: <input type="text" name="ingredient_${ols}"/>`;
+            let x = `<li><label for="ingredient_${++ols}">ingedient naam: <input type="text" name="ingredient_${ols}"/>`;
             let optgroup = '';
-            for (const x1 of 'gram, stuk, liter, snufje, eetlepe, theelepel'.split(/, ?/g)) {
+            for (const x1 of 'gram, stuk, liter, snufje, eetlepel, theelepel'.split(/, ?/g)) {
                 optgroup += `<option name="${x1}">${x1}</option>`;
             }
-            x += `</label> <label for="unit_${ols}">unit: <select name="unit_${ols}">${optgroup}</select></label>`;
-            ol.insertAdjacentHTML('beforeend', x);
+            x += `</label> <label for="unit_${ols}">eenheid: <select name="unit_${ols}">${optgroup}</select></label>`;
+            ol.insertAdjacentHTML('beforeend', `${x} <button onclick="this.parentElement.remove()" type=button>remove</button>`);
+        }
+
+        for (const x2 of 'anders, ontbijt, lunch, tussendoortje, hoofgerecht, bijgerecht, toetje'.split(/, ?/g)) {
+            select.innerHTML += `<option name="${x2}">${x2}</option>`;
+        }
+
+        function add_benodigheid() {
+            const x = `<li><label for="benodigheid_${++benodigheid}">benodigheid naam: <input type="text" name="benodigheid_${benodigheid}"/></label>`;
+            searchIndex.insertAdjacentHTML('beforeend', `${x} <button onclick="this.parentElement.remove()" type=button>remove</button>`);
         }
 
         add_ingredient();
         add_ingredient();
-        add_ingredient();
-        add_ingredient();
+        add_benodigheid();
+        add_benodigheid();
     </script>
     <button type=submit>submit</button>
     <span hidden>$recipes</span>
