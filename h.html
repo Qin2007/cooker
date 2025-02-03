@@ -47,6 +47,9 @@
         <label for="select">maal type:</label>
         <select id="select" name="mealType"></select>
     </div>
+    <div style="margin: 1em 0">
+        <label>voor <input name="persons" value="1" type=number> personen</label>
+    </div>
     <script>
         const ol = document.getElementById('ol');
         const searchIndex = document.getElementById('benodigheid');
@@ -55,11 +58,11 @@
 
         function add_ingredient() {
             let x = `<li><label for="ingredient_${++ols}">ingedient naam: <input type="text" name="ingredient_${ols}"/>`;
-            let optgroup = '';
+            /*let optgroup = '';
             for (const x1 of 'gram, stuk, liter, snufje, eetlepel, theelepel'.split(/, ?/g)) {
-                optgroup += `<option name="${x1}">${x1}</option>`;
-            }
-            x += `</label> <label for="unit_${ols}">eenheid: <select name="unit_${ols}">${optgroup}</select></label>`;
+                optgroup += `<option name="${x1}">${x1}</option>`;}x +=
+            `</label> <label for="unit_${ols}">eenheid: <select name="unit_${ols}">${optgroup}</select></label>`;*/
+            x += `<input name="unit_${ols}" value="" type=hidden>`;
             ol.insertAdjacentHTML('beforeend', `${x} <button onclick="this.parentElement.remove()" type=button>remove</button>`);
         }
 
@@ -77,10 +80,10 @@
         add_benodigheid();
         add_benodigheid();
     </script>
-    <button type=submit>submit</button>
+    <button type=submit>CREATE</button>
     <span hidden>$recipes</span>
     <script>
-        const element = JSON.parse(document.querySelector('[hidden]').innerText);
+        const element = JSON.parse(document.querySelector('span[hidden]').innerText);
         console.log(element);
     </script>
 </form>

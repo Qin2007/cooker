@@ -68,19 +68,20 @@ try {
             }
         });
         innerHTML += '<h3>benodigheden</h3>';
-        innerHTML += '<ol>';
+        innerHTML += '<ul>';
         benodigheid.forEach(function (indexedElement) {
             innerHTML += `<li>${html_encode(indexedElement)}`;
         });
-        innerHTML += '</ol>';
+        innerHTML += '</ul>';
         innerHTML += '<h3>ingedienten</h3>';
-        innerHTML += '<ol>';
+        innerHTML += '<ul>';
         ingredient.forEach(function (indexedElement) {
             innerHTML += `<li>${html_encode(indexedElement.join(' '))}`;
         });
-        innerHTML += '</ol>';
+        innerHTML += '</ul>';
         innerHTML += '<h3>bereidingsweize</h3>';
-        innerHTML += `<pre>${html_encode(element['steps'] ?? element['imlazy'] ?? undefined)}</pre>`;
+        innerHTML += `<div style="max-width:640px"><p>${html_encode(element['steps'] ?? element['imlazy'] ?? undefined)
+            .replace(/\r?\n\r?\n/g, '<p>').replace(/\r?\n/g, '<br>')}</div>`;
         innerHTML += '<button type=button name="action" value="remove" onclick="alert(\'to remove a recipe simply remove it from the json file\')">remove recipe (not implemented)</button></form>';
         elementById.innerHTML += innerHTML;
     });
