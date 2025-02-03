@@ -14,7 +14,7 @@ function html_encode(strx) {
 
 }
 
-const tin_s = 1;
+// const tin_s = 1;
 const tin_m = 60;
 const tin_h = 60 * 60;
 const tin_d = (60 * 60) * 24;
@@ -42,7 +42,6 @@ try {
         innerHTML += `<br/>bereidingtijd: ${result['Hours']} Hours, ${result['Minutes']} Minutes, ${result['ResultS']} Seconds`;
         innerHTML += `<input name=uuid value="${html_encode(element['uuid'])}" type=hidden>`;
 
-        innerHTML += `<h3>ingedienten</h3><ol>`;
         const ingredient = [], benodigheid = [];
         Object.entries(element).forEach(function ([element, value]) {
             const exec = /^([a-zA-Z]+)_([0-9]+)$/.exec(String(element));
@@ -68,14 +67,21 @@ try {
                 }
             }
         });
-        ingredient.forEach(function (indexedElement) {
-            innerHTML += `<li>${html_encode(indexedElement.join(' '))}`;
-        });
-        innerHTML += '</ol><h3>benodigheden</h3><ol>';
+        innerHTML += '<h3>benodigheden</h3>';
+        innerHTML += '<ol>';
         benodigheid.forEach(function (indexedElement) {
             innerHTML += `<li>${html_encode(indexedElement)}`;
         });
-        innerHTML += '</ol><p>to remove a recipe simply remove it from the json file<!--<button type="submit" name="action" value="remove">remove recipe</button>--></form>';
+        innerHTML += '</ol>';
+        innerHTML += '<h3>ingedienten</h3>';
+        innerHTML += '<ol>';
+        ingredient.forEach(function (indexedElement) {
+            innerHTML += `<li>${html_encode(indexedElement.join(' '))}`;
+        });
+        innerHTML += '</ol>';
+        innerHTML += '<h3>bereidingsweize</h3>';
+        innerHTML += `<pre>${html_encode(element['steps'] ?? element['imlazy'] ?? undefined)}</pre>`;
+        innerHTML += '<button type=button name="action" value="remove" onclick="alert(\'to remove a recipe simply remove it from the json file\')">remove recipe (not implemented)</button></form>';
         elementById.innerHTML += innerHTML;
     });
 } catch (e) {

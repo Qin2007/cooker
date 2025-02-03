@@ -24,7 +24,7 @@ async def home(request: web.Request):
         x += f'<li><a href="{i[0]}">{i[1]}</a>'
     thing = '<meta charset=\"UTF-8\"/><style> body, input {font-family: monospace;}'
     thing += "a:visited,a:link{color:blue;}a:hover{color:orangered;}a:active{color:black;}"
-    thing += "html,input{font-family:monospace;}</style>"
+    thing += "html,input,button{font-family:monospace;}</style>"
     thing += '<meta name="viewport" content="width=device-width, initial-scale=1" />'
     with open('recipes.json', 'rt', encoding='utf8') as file:
         things = html_encode(file.read())
@@ -48,6 +48,7 @@ async def home(request: web.Request):
     with open('h.html', 'rt', encoding='utf8') as file, open('recipes.json', 'rt', encoding='utf8') as jsonic:
         text = file.read().replace('$recipes', html_encode(jsonic.read()))
     return web.Response(body=text, content_type='text/html', charset='UTF-8')
+
 
 @routes.post('/post')
 async def home_add_recipe(request: web.Request):
