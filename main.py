@@ -50,16 +50,45 @@ async def home(request: web.Request):
     return web.Response(body=text, content_type='text/html', charset='UTF-8')
 
 
+@routes.post('/delete')
+async def home_add_recipe(request: web.Request):
+    array = dict(await request.post())
+    try:
+        with open('recipes.json', 'rt', encoding='utf8') as file:
+            parsed = file.read()
+            arrays = json.loads(parsed)['recipes']
+    except json.decoder.JSONDecodeError:
+        with open('recipes-debug.json', 'wt', encoding='utf8') as writeto:
+            writeto.write(parsed)
+            arrays = list()
+    try:
+        arrays.pop(arrays.index(array['uuid']))
+    except ValueError:
+        return web.Response(status=307, headers={'Location': '/?error=true'})
+    else:
+        with open('recipes.json', 'wt', encoding='utf8') as file:
+            file.write(json.dumps(dict(recipes=arrays), indent=4))
+    return web.Response(status=307, headers={'Location': '/'})
+
+
 @routes.post('/post')
 async def home_add_recipe(request: web.Request):
     array = dict(await request.post())
-    with open('recipes.json', 'rt', encoding='utf8') as file:
-        arrays = json.loads(file.read())
+    try:
+        with open('recipes.json', 'rt', encoding='utf8') as file:
+            parsed = file.read()
+            arrays = json.loads(parsed)['recipes']
+    except KeyError:
+        arrays = list()
+    except json.decoder.JSONDecodeError:
+        with open('recipes-debug.json', 'wt', encoding='utf8') as writeto:
+            writeto.write(parsed)
+            arrays = list()
     arrays.append(array)
     array['Date'] = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
     array['uuid'] = str(uuid.uuid4())
     with open('recipes.json', 'wt', encoding='utf8') as file:
-        file.write(json.dumps(arrays, indent=4))
+        file.write(json.dumps(dict(recipes=arrays), indent=4))
     return web.Response(status=307, headers={'Location': '/'})
 
 

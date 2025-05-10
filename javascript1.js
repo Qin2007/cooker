@@ -1,7 +1,7 @@
 // javascript
 "use strict";
 const elementById = document.getElementById('elementById');
-const jsonic = JSON.parse(document.querySelector('pre[hidden]').innerText);
+const jsonic = JSON.parse(document.querySelector('pre[hidden]').innerText)['recipes'];
 console.log(JSON.stringify(jsonic, null, 2));
 
 function html_encode(strx) {
@@ -82,7 +82,7 @@ try {
         innerHTML += '<h3>bereidingsweize</h3>';
         innerHTML += `<div style="max-width:640px"><p>${html_encode(element['steps'] ?? element['imlazy'] ?? undefined)
             .replace(/\r?\n\r?\n/g, '<p>').replace(/\r?\n/g, '<br>')}</div>`;
-        innerHTML += '<button type=button name="action" value="remove" onclick="alert(\'to remove a recipe simply remove it from the json file\')">remove recipe (not implemented)</button></form>';
+        innerHTML += '<button formaction=delete type=submit>remove recipe</button></form>';
         elementById.innerHTML += innerHTML;
     });
 } catch (e) {

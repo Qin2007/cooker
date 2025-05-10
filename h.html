@@ -43,6 +43,8 @@
     <h2>metadata</h2>
     <label for="date-time-local">bereidingtijd (in minutes only)</label>
     <input type="number" id="date-time-local" name="time"/>
+    <br><label for="photos">photos</label>
+    <input id="photos" accept="image/*" type=file>
     <div style="margin: 1em 0">
         <label for="select">maal type:</label>
         <select id="select" name="mealType"></select>
@@ -57,12 +59,12 @@
         let ols = 0, benodigheid = 0;
 
         function add_ingredient() {
-            let x = `<li><label for="ingredient_${++ols}">ingedient naam: <input type="text" name="ingredient_${ols}"/>`;
+            const x = `<li><label for="ingredient_${++ols}">ingedient naam: <input type="text" name="ingredient_${ols}"/>`;
             /*let optgroup = '';
             for (const x1 of 'gram, stuk, liter, snufje, eetlepel, theelepel'.split(/, ?/g)) {
                 optgroup += `<option name="${x1}">${x1}</option>`;}x +=
             `</label> <label for="unit_${ols}">eenheid: <select name="unit_${ols}">${optgroup}</select></label>`;*/
-            x += `<input name="unit_${ols}" value="" type=hidden>`;
+            // x += `<input name="unit_${ols}" value="" type=hidden>`;
             ol.insertAdjacentHTML('beforeend', `${x} <button onclick="this.parentElement.remove()" type=button>remove</button>`);
         }
 
@@ -80,7 +82,7 @@
         add_benodigheid();
         add_benodigheid();
     </script>
-    <button type=submit>CREATE</button>
+    <button type=submit>creeer</button>
     <span hidden>$recipes</span>
     <script>
         const element = JSON.parse(document.querySelector('span[hidden]').innerText);

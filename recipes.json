@@ -1,38 +1,45 @@
-[
-    {
-        "title": "Spareribs uit de oven en van de BBQ",
-        "ingredient_1": "2 Spareribs (ca. 1200 tot 1200 in gr totaal)",
-        "unit_1": "",
-        "ingredient_2": "80 ml honing",
-        "unit_2": "",
-        "ingredient_3": "60 ml ketjab",
-        "unit_3": "",
-        "ingredient_4": "30 gr bruine basterdsuikee",
-        "unit_4": "",
-        "ingredient_5": "3cm verse gember",
-        "unit_5": "",
-        "ingredient_6": "3 tenen knoflook",
-        "unit_6": "",
-        "ingredient_7": "2 eetlepels tomatenpuree",
-        "unit_7": "",
-        "ingredient_8": "1 rode peper",
-        "unit_8": "",
-        "ingredient_9": "1 theelepel gedroogde rozemarijn",
-        "unit_9": "",
-        "ingredient_10": "snuf kaneelpoeder",
-        "unit_10": "",
-        "ingredient_11": "Paar druppels worcestersaus",
-        "unit_11": "",
-        "ingredient_12": "scheutje water",
-        "unit_12": "",
-        "benodigheid_1": "blender of keuken machine",
-        "benodigheid_2": "grote ovenschaal",
-        "benodigheid_3": "aluminiumfolie",
-        "steps": "(15 min + marineren +2.5 uur bereiden) Hoe maak je de lekkerste spareribs? Hier vind je het recept voor een heerlijke zoete licht pittige sparerib marinade en een uitgebreide uitleg voor het bereiden van spareribs in de oven en op de barbecue\n\nVerwarm de oven op 150 graden. Voeg een scheutje water toe aan de ovenschaal met de spareribs en dek weer af met folie en zet de ovenschaal ca. 2 uur in de oven. Daarna zijn de spareribs voorgegaard en kun je kiezen of je ze verder bakt in de oven of op de barbecue.\n\nIn de oven: verwarm dan de temperatuur naar 200 graden en kwast de spareribs nogmaals in met de overgebleven marinade en bak ze nog ca. 30 minuten in de oven (zonder folie).\n\nOp de BBQ: Verhit de BBQ op ca. 220 graden en kwast de spareribs nogmaals in met de overgebleven marinade. Grill de spareribs ca. 20 minuten op de barbecue tot ze een mooi bruin en licht krokant korstje hebben.\n\nTip: je kunt de spareribs ook geheel bereiden op de BBQ, dit duurt wel langer. Zet een druipbakje gevuld met water onder in de BBQ en verwarm de BBQ op lage temperatuur, ca. 130 graden. Leg de gemarineerde spareribs rauw op de BBQ en doe de deksel dicht. Laat ze vervolgens ca. 2,5 uur op de bbq langzaam garen, let op dat de temperatuur constant blijft en smeer ze 2 of 3 x in met de extra marinade. Wikkel ze daarna in met aluminiumfolie en voeg een klein scheutje water toe en leg ze nogmaals 1 uur op de BBQ. Haal ze uit de folie en verwarm de barbecue op hogere temperatuur (ca. 220 graden) en bak de spareribs nog even kort af aan de buitenzijde.",
-        "time": 165 ,
-        "mealType": "hoofgerecht",
-        "persons": "4",
-        "Date": "2025-02-03T11:23:15Z",
-        "uuid": "f139b285-f4ff-4d0e-8108-5325c8b4b3b5"
-    }
-]
+{
+    "recipes": [
+        {
+            "title": "Title",
+            "ingredient_1": "name1",
+            "ingredient_2": "name2",
+            "benodigheid_1": "ben2",
+            "benodigheid_2": "ben1",
+            "steps": "thing",
+            "time": "42",
+            "mealType": "lunch",
+            "persons": "1",
+            "Date": "2025-05-10T15:38:35Z",
+            "uuid": "cb57f243-8057-4943-8620-fee5f22025e0"
+        },
+        {
+            "title": "",
+            "ingredient_1": "",
+            "ingredient_2": "",
+            "benodigheid_1": "",
+            "benodigheid_2": "",
+            "steps": "",
+            "time": "",
+            "x": "0",
+            "y": "0",
+            "mealType": "anders",
+            "persons": "1",
+            "Date": "2025-05-10T15:43:32Z",
+            "uuid": "c9c35b26-3acb-4a28-b46d-5d0abd7b7c6b"
+        },
+        {
+            "title": "",
+            "ingredient_1": "",
+            "ingredient_2": "",
+            "benodigheid_1": "",
+            "benodigheid_2": "",
+            "steps": "",
+            "time": "",
+            "mealType": "anders",
+            "persons": "1",
+            "Date": "2025-05-10T15:44:25Z",
+            "uuid": "a184378a-225a-4d34-ae68-6e263b6d5942"
+        }
+    ]
+}
